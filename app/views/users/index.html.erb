@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+<%= stylesheet_link_tag "main" %>
+
+<%= search_form_for @q do |f| %>
+  <div class="input-group input-group-lg search">
+  <%= f.search_field :firstname_cont,class: 'form-control' %>
+
+  <%= f.submit class: 'btn btn-primary' %> <br>
+<% end %> <br>
+</div>
+<h1 align="center">Users</h1> <br>
+<div class="container">
+ <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+
+<div id="users">
+ <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.firstname %></td>
+        <td> <%= user.lastname %></td>
+        <td> <%= user.email %></td>
+        <td> <%= user.age %></td>
+        <td> <%= link_to "Show this user", user, class: "btn btn-info" %> </td>
+      </tr>
+       <% end %>
+    </tbody>
+  </table>
+ 
+</div> <br>
+</div>
+<%= link_to "New user", new_user_path %>
